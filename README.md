@@ -48,11 +48,11 @@ Chaque utilisateurs possède des todos (20 par utilisateurs à l'initialisation)
         - Le body de la requête POST devra contenir l’objet todo à ajouter:
             - Exemple: ``` { "userId": 1, "title": "todo", "completed": false, "endDate": "05/01/2023", "pos": 1, "description": "call the client" } ```
             - userId: le id de l’utilisateur ayant créé la todo (int)
-            - Title: le titre de la todo (string)
-            - Description: la description de la todo (string)
+            - title: le titre de la todo (string)
+            - description: la description de la todo (string)
             - endDate: la date d’échange pour la réalisation de la todo (date)
-            - Completed: attribut boolean qui définit si un todo a été réalisé ou pas (boolean)
-            - Pos: attribut qui définit l’ordre d’affichage du todo (int)
+            - completed: attribut boolean qui définit si un todo a été réalisé ou pas (boolean)
+            - pos: attribut qui définit l’ordre d’affichage du todo (int)
         - Le id de la todo est généré automatiquement par l’api et retourné dans la réponse du POST:
             - Exemple: ```{  "userId": 1, "title": "todo", "completed": false, "endDate": "05/01/2023", "pos": 1, "description": "call the client" , "id": 201 } ```
 - Pour modifier une partie des informations d’un todo
@@ -72,14 +72,14 @@ Chaque todo peut avoir une liste de todos imbriqués
     - POST ```http://localhost:3000/nestedTodos```
     - Le body de la requête contient les informations du nested  todo
         - Exemple: ```{ "todoId": 1, "title": "delectus aut autem", "description": "quis ut nam facilis et officia qui", "completed": true, "endDate": "25/10/2021"}```
-        - TODOId: le id du todo associé au nested todo (int)
-        - Title: le titre du nested todo (string)
-        - Description: la description du nested l todo (string)
+        - todoId: le id du todo parent (auquel on veut ajouter le nested todo) (int)
+        - title: le titre du nested todo (string)
+        - description: la description du nested l todo (string)
         - endDate: la date d’échange pour la réalisation de la todo (date)
         - Completed: attribut boolean qui définit si un todo a été réalisé ou pas (boolean)
     - le id du nested todo est généré par l’api lors de la création, et retourné dans la réponse du POST en cas de succès : ```{ "todoId": 1, "title": "delectus aut autem", "description": "quis ut nam facilis et officia qui", "completed": true, "endDate": "25/10/2021", "id": 16 }```
 - Récupérer l’ensemble des nested todos d’un todo:
-    - GET ```http://localhost:3000/nestedTodos/:id``` ou id est l’identifiant du todo dont on veut récupérer les nested todos
+    - GET ```http://localhost:3000/nestedTodos/:id``` ou id est l’identifiant du todo (le todo parent) dont on veut récupérer les nested todos
         - Exemple: ```http://localhost:3000/nestedTodos/1```
     - En cas de succès (status 200), la requête retourne un tableau contenant les nested todos:
         - Exemple: ```[ { "todoId": 1, "id": 1, "title": "delectus aut autem", "description": "quis ut nam facilis et officia qui", "completed": false, "endDate": "05/01/2023" } ]```
