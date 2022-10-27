@@ -79,8 +79,8 @@ Chaque todo peut avoir une liste de todos imbriqués
         - Completed: attribut boolean qui définit si un todo a été réalisé ou pas (boolean)
     - le id du nested todo est généré par l’api lors de la création, et retourné dans la réponse du POST en cas de succès : ```{ "todoId": 1, "title": "delectus aut autem", "description": "quis ut nam facilis et officia qui", "completed": true, "endDate": "25/10/2021", "id": 16 }```
 - Récupérer l’ensemble des nested todos d’un todo:
-    - GET ```http://localhost:3000/nestedTodos/:id``` ou id est l’identifiant du todo (le todo parent) dont on veut récupérer les nested todos
-        - Exemple: ```http://localhost:3000/nestedTodos/1```
+    - GET ```http://localhost:3000/nestedTodos?todoId= {id}``` ou id est l’identifiant du todo (le todo parent) dont on veut récupérer les nested todos
+        - Exemple: ```http://localhost:3000/nestedTodos?todoId=1```
     - En cas de succès (status 200), la requête retourne un tableau contenant les nested todos:
         - Exemple: ```[ { "todoId": 1, "id": 1, "title": "delectus aut autem", "description": "quis ut nam facilis et officia qui", "completed": false, "endDate": "05/01/2023" } ]```
 - Pour modifier une partie des informations d’un nested todo
